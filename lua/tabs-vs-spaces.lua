@@ -43,9 +43,6 @@ local config = {
 	user_commands = true,
 }
 
----@param user_config? Config
-function config.apply(user_config) config = vim.tbl_deep_extend("keep", user_config or {}, config) end
-
 -- Utils ======================================================================
 
 local api, fn = vim.api, vim.fn
@@ -269,7 +266,7 @@ end
 
 ---@param user_config? Config
 function M.setup(user_config)
-	config.apply(user_config)
+	config = vim.tbl_deep_extend("keep", user_config or {}, config)
 	vim.g[PLUGIN] = 1
 	set_ignored()
 	create_aus()
