@@ -228,7 +228,7 @@ function M.standartize(range)
 		local ts_store = vim.bo.tabstop
 		if remaining_spaces and #remaining_spaces > 0 then
 			vim.bo.tabstop = #remaining_spaces
-			M.convert("tabs", range)
+			M.convert("spaces", range)
 			vim.bo.tabstop = ts_store
 		end
 	end
