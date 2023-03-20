@@ -21,18 +21,17 @@ https://user-images.githubusercontent.com/34311583/226349494-edd8da2a-f533-404a-
 
 
 
-Ideally, leading and trailing space are taken care of by a project-specific
-formatter. This plugin exists because despite that, commits and codebases
-continue to exist with indentation styles that differ from a project’s
-defaults.
+Ideally, leading and trailing spaces are taken care of by a project-specific
+formatter. Nevertheless, commits and codebases with indentation styles that
+deviate from a project defaults continue to exist.
 
 There are several reasons why indentation styles might get mixed up.
 
 
-- A project specific linter/formatter is not installed or in its necessary configuration available.
-- Wrong indentation might not be obvious, with or without space chars toggled on.
-- Quick editing single files outside a projects working directory.
-- The editor is not configured to or did not automatically detect a files’ indentation style.
+- A project-specific linter/formatter is either not installed or not available in its required configuration.
+- Quick editing single files outside a project’s working directory.
+- Wrong indentation might not be obvious, with or without space characters toggled on.
+- The editor is not configured to or did not automatically detect a file’s indentation style.
 - Reusing code templates from previous projects or copying code from external sources.
 - Interference with local formatter settings.
 
