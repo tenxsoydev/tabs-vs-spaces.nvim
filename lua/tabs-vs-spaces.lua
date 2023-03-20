@@ -257,7 +257,7 @@ local function create_cmds()
 	api.nvim_create_user_command(CLUSTER .. "Convert", function(opts)
 		local indentation = opts.args == "tabs_to_spaces" and "tabs" or opts.args == "spaces_to_tabs" and "spaces"
 		if not indentation then return end
-		convert(indentation, opts.range)
+		M.convert(indentation, opts.range)
 	end, {
 		nargs = 1,
 		complete = function() return { "tabs_to_spaces", "spaces_to_tabs" } end,
