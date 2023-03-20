@@ -193,17 +193,34 @@ function M.toggle(enable, buf)
 	if has_tint then tint.refresh() end
 end
 
+---@param indentation Indentaiton
+---@param range 0|2
+function M.convert(indentation, range)
+	local ts = vim.bo.tabstop
+	if indentation == "tabs" then
+		local pattern = [[s/\(^\s*\)\@<=\t/]] .. string.rep(" ", ts) .. "/ge"
+		pattern = range == 2 and "'<,'>" .. pattern or "%" .. pattern
+		vim.cmd("set et|" .. pattern)
+		current_deviator = "tabs"
+	elseif indentation == "spaces" then
+		local pattern = [[s/\(^\s*\)\@<= \{]] .. ts .. "}/\t/ge"
+		pattern = range == 2 and "'<,'>" .. pattern or "%" .. pattern
+		vim.cmd("silent set noet|" .. pattern)
+		current_deviator = "spaces"
+	end
+end
+
 ---@param range 0|2
 function M.standartize(range)
 	-- Tabs to spaces
 	if current_deviator == "tabs" then
-		vim.cmd("set et|retab")
+		M.convert("tabs", range)
 		return
 	end
 
-	local retab = range == 2 and "'<,'>retab!" or "retab!"
 	-- Spaces to tabs
-	vim.cmd("set noet|" .. retab)
+	M.convert("spaces", range)
+
 	-- Spaces can be sticky little bastards, especially if they are inserted in a quantity that does not match the
 	-- currently configured tab stop value. After re-tabbing, we need to check for residue.
 	for _, line in ipairs(vim.api.nvim_buf_get_lines(0, 0, -1, false)) do
@@ -211,21 +228,9 @@ function M.standartize(range)
 		local ts_store = vim.bo.tabstop
 		if remaining_spaces and #remaining_spaces > 0 then
 			vim.bo.tabstop = #remaining_spaces
-			vim.cmd("set noet|" .. retab)
+			M.convert("tabs", range)
 			vim.bo.tabstop = ts_store
 		end
-	end
-end
-
----@param indentation Indentaiton
----@param range 0|2
-function M.convert(indentation, range)
-	if indentation == "tabs" then
-		current_deviator = "tabs"
-		M.standartize(range)
-	elseif indentation == "spaces" then
-		current_deviator = "spaces"
-		M.standartize(range)
 	end
 end
 
