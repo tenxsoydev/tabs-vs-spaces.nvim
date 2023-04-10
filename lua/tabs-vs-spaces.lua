@@ -145,7 +145,7 @@ end
 
 local function create_aus()
 	api.nvim_create_augroup(CLUSTER, { clear = true })
-	api.nvim_create_autocmd({ "WinEnter", "BufEnter", "CmdlineLeave" }, {
+	api.nvim_create_autocmd({ "WinEnter", "BufEnter", "CmdlineLeave", "BufWritePost" }, {
 		group = CLUSTER,
 		callback = function() vim.schedule(M.highlight) end,
 	})
