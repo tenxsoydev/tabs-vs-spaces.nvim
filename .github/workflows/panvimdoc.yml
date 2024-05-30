@@ -2,12 +2,9 @@ name: Generate Documentation
 
 on:
   push:
-    branches: ["main"]
+    branches: ['main']
     paths:
-      - "README.md"
-  pull_request:
-    paths:
-      - "README.md"
+      - 'README.md'
   workflow_dispatch:
 
 jobs:
@@ -20,10 +17,10 @@ jobs:
         with:
           vimdoc: tabs-vs-spaces
           description: Hint and fix deviating indentation.
-          version: "Neovim >= 0.8.0"
+          version: 'Neovim >= 0.8.0'
           demojify: true
       - name: Commit docs
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: "docs: auto generate vim docs"
+          commit_message: 'docs: auto generate vim docs'
           branch: ${{ github.head_ref }}
