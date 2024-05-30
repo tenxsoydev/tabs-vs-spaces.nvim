@@ -27,7 +27,6 @@ deviate from a project defaults continue to exist.
 
 There are several reasons why indentation styles might get mixed up.
 
-
 - A project-specific linter/formatter is either not installed or not available in its required configuration.
 - Quick editing single files outside a project’s working directory.
 - Wrong indentation might not be obvious, with or without space characters toggled on.
@@ -85,14 +84,13 @@ CONFIG                             *tabs-vs-spaces-tabs-vs-spaces.nvim-config*
         },
       },
       standartize_on_save = false,
-      -- Enable or disable user commands see Readme.md/Commands for more info.
+      -- Enable or disable user commands see Readme.md/#Commands for more info.
       user_commands = true,
     }
 <
 
 
  ›  COMMANDS         *tabs-vs-spaces-tabs-vs-spaces.nvim- › -commands*
-
 
 - `:TabsVsSpacesToggle` optional args `on` | `buf_on` | `off` | `buff_off`
 - `:TabsVsSpacesStandardize` works for current buffer or selected range `:'<,'>TabsVsSpacesStandardize`
@@ -102,7 +100,6 @@ Command args work with completion.
 
 
 COMPLEMENTARY TOOLS   *tabs-vs-spaces-tabs-vs-spaces.nvim-complementary-tools*
-
 
 - mini.trailspace <https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-trailspace.md>
 - guess-indent <https://github.com/nmac427/guess-indent.nvim>
