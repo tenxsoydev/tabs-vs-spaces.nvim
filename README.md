@@ -73,7 +73,7 @@ require("tabs-vs-spaces").setup {
 ## &nbsp;›&nbsp; Commands
 
 - `:TabsVsSpacesToggle` optional args `on` | `buf_on` | `off` | `buff_off`
-- `:TabsVsSpacesStandartize` works for current buffer or selected range `:'<,'>TabsVsSpacesStandartize`
+- `:TabsVsSpacesStandardize` works for current buffer or selected range `:'<,'>TabsVsSpacesStandardize`
 - `:TabsVsSpacesConvert` args `spaces_to_tabs` | `tabs_to_spaces` for current buffer or range.
 
 Command args work with completion.
