@@ -208,6 +208,7 @@ function M.convert(indentation, range)
 		vim.cmd("silent set noet|" .. pattern)
 		current_deviator = "spaces"
 	end
+	vim.cmd("noh")
 end
 
 ---@param range 0|2
